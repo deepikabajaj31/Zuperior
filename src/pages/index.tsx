@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Card from "@/components/Card";
 import Timeline from "@/components/Timeline";
 import Packages from "@/components/Packages";
+import Video from "@/components/Video";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function Home() {
         headingTextAfter=""
         footerText="Prove your skills, get funded, and trade like a pro."
       />
+      <Video />
     </div>
   );
 }
