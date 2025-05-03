@@ -53,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({
             damping: 25,
             mass: 0.3,
           }}
-          className="text-5xl font-semibold px-6"
+          className="text-4xl md:text-5xl font-semibold px-6"
         >
           {headingTextBefore}{" "}
           <span style={{ color: "#a35ca2" }}>{highlightedText}</span>{" "}

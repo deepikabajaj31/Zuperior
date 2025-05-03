@@ -12,6 +12,12 @@
     width: 100%;
     max-width: 1100px;
     position: relative;
+    margin-bottom: 2rem;
+}
+
+.desktop {
+    width: 100%;
+    display: flex;
 }
 
 .left,
@@ -34,7 +40,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 0;
+    padding-bottom: 1rem;
 }
 
 .step-number {
@@ -69,4 +75,58 @@
     font-size: 1.5rem;
     font-weight: 600;
     margin: 0.2rem 0 0;
+}
+
+.mobile {
+    display: none;
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 768px) {
+    .step-container {
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 0.3rem;
+    }
+
+    .left,
+    .right,
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+        width: 100%;
+        padding: 0 1rem 0 2rem;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .center {
+        width: 20%;
+        padding-right: 1rem;
+        padding-bottom: 0;
+    }
+
+    .mobile-step-text {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .step-title,
+    .step-sub {
+        text-align: left;
+    }
+
+    .step-number {
+        font-size: 2.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .line-container {
+        height: 285px;
+    }
 }
