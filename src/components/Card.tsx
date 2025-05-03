@@ -1,5 +1,5 @@
 import { CSSProperties, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 interface HeaderProps {
   buttonText: string;
@@ -20,11 +20,17 @@ const Header: React.FC<HeaderProps> = ({
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.99", "start 0.3"], // Start when top of element is 99% from top, end at 30%
+    offset: ["start 1", "start 0.3"], // Start when top of element is 90% from top, end at 30%
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["100vw", "0vw"]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 20,
+    mass: 0.2,
+  });
+
+  const x = useTransform(smoothProgress, [0, 1], ["100vw", "0vw"]);
+  const opacity = useTransform(smoothProgress, [0, 1], [0, 1]);
 
   return (
     <div
@@ -40,9 +46,14 @@ const Header: React.FC<HeaderProps> = ({
 
       <div className="w-full text-center min-h-[60px]">
         <motion.div
-          style={{ x, opacity }} // Bind x and opacity to scroll progress
-          transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="text-5xl font-semibold"
+          style={{ x, opacity }}
+          transition={{
+            type: "spring",
+            stiffness: 120,
+            damping: 25,
+            mass: 0.3,
+          }}
+          className="text-5xl font-semibold px-6"
         >
           {headingTextBefore}{" "}
           <span style={{ color: "#a35ca2" }}>{highlightedText}</span>{" "}
