@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({
                 </p>
             </button>
             <div>
-                <p className="text-5xl font-medium">
+                <p className="text-5xl font-semibold">
                     {headingTextBefore}{" "}
                     <span style={{ color: "#a35ca2" }}>{highlightedText}</span>
                     {headingTextAfter}{" "}
