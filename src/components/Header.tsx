@@ -7,10 +7,17 @@ const Header: React.FC = () => {
       className="p-0 overflow-hidden justify-center items-center flex-nowrap w-min flex relative flex-col w-min h-min"
     >
       <button style={styles.button} className="h-min rounded-3xl">
-        <p style={styles.btnText} className="rounded-3xl text-lg font-semibold">
+        <p style={styles.btnText} className="rounded-3xl font-semibold">
           Our Process
         </p>
       </button>
+      <div>
+        <p className="text-5xl font-medium">
+          Become a <span style={{ color: "#a35ca2" }}>Zuperior Pro</span> in
+          sec...
+        </p>
+      </div>
+      <p>🚀 Sign up. Fund. Trade.</p>
     </header>
   );
 };
