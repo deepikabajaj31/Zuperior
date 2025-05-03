@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-/* styles/globals.css */
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-
 
 @custom-variant dark (&:is(.dark *));
 
@@ -95,7 +93,7 @@ body {
 
 * {
   box-sizing: border-box;
-  font-family: "Manrope","Manrope Fallback";
+  font-family: "Manrope", "Manrope Fallback";
   -webkit-font-smoothing: antialiased !important;
 }
 
@@ -137,8 +135,8 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
-
