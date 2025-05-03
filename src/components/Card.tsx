@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { CSSProperties } from "react";
+import { CSSProperties, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface HeaderProps {
   buttonText: string;
@@ -16,31 +16,19 @@ const Header: React.FC<HeaderProps> = ({
   headingTextAfter,
   footerText,
 }) => {
-  const animationRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.4 }
-    );
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.99", "start 0.3"], // Start when top of element is 99% from top, end at 30%
+  });
 
-    if (animationRef.current) {
-      observer.observe(animationRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const x = useTransform(scrollYProgress, [0, 1], ["100vw", "0vw"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <div
+      ref={ref}
       style={styles.header}
       className="p-0 overflow-hidden justify-center items-center flex-nowrap w-min flex relative flex-col w-min h-min"
     >
@@ -50,17 +38,16 @@ const Header: React.FC<HeaderProps> = ({
         </p>
       </button>
 
-      <div
-        ref={animationRef}
-        className={`w-full text-center transform transition-all duration-2000 ease-out ${
-          isVisible ? "translate-x-0 opacity-100" : "translate-x-24 opacity-0"
-        }`}
-      >
-        <p className="text-5xl font-semibold">
+      <div className="w-full text-center min-h-[60px]">
+        <motion.div
+          style={{ x, opacity }} // Bind x and opacity to scroll progress
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          className="text-5xl font-semibold"
+        >
           {headingTextBefore}{" "}
           <span style={{ color: "#a35ca2" }}>{highlightedText}</span>{" "}
           {headingTextAfter}
-        </p>
+        </motion.div>
       </div>
 
       <p>{footerText}</p>
