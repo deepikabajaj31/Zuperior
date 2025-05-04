@@ -77,7 +77,7 @@ const Footer = () => {
       <img
         src="https://framerusercontent.com/images/VK7tmBzTRU7cEgNp1WcXO7kHYuA.png"
         alt=""
-        className="absolute top-[37rem] left-1/2 transform -translate-x-1/2 -translate-y-[30%] object-contain object-center rounded-xl z-5 h-[5rem] w-[10rem]"
+        className="absolute top-[37rem] left-1/2 transform -translate-x-1/2 -translate-y-[30%] object-contain object-center rounded-xl z-5 h-[5rem] w-[10rem] cursor-pointer"
       />
 
       <motion.div className="text-white text-4xl z-0" style={{ x: springX }}>
