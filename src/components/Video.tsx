@@ -17,7 +17,7 @@ const Video: React.FC = () => {
       </div>
       <Button
         label="Get Funded"
-        bgColor="black"
+        bgColor="rgb(1, 4, 13)"
         isRotate={true}
         className="w-min m-auto border border-black mt-[-3.5rem]"
         width="10rem"

@@ -3,6 +3,7 @@ import Timeline from "@/components/Steps";
 import Packages from "@/components/Packages";
 import Video from "@/components/Video";
 import Button from "@/components/Button";
+import Counter from "@/components/Counter";
 
 export default function Home() {
   return (
@@ -39,6 +40,7 @@ export default function Home() {
         headingTextBefore="We’ve Paid Out Over $1M to Traders"
         footerText="Your Trust is Our Fuel—Power Up with Zuperior"
       />
+      <Counter />
     </div>
   );
 }
