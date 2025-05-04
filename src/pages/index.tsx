@@ -37,8 +37,9 @@ export default function Home() {
       <Video />
       <Banner
         buttonText="Payouts"
-        headingTextBefore="We’ve Paid Out Over $1M to Traders"
+        headingTextBefore="We’ve Paid Out Over <br/> $1M to Traders"
         footerText="Your Trust is Our Fuel—Power Up with Zuperior"
+        blurAnimation={true}
       />
       <Counter />
     </div>

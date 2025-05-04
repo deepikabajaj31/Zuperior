@@ -7,6 +7,7 @@ interface BannerProps {
   highlightedText?: string;
   headingTextAfter?: string;
   footerText: string;
+  blurAnimation?: boolean;
 }
 
 const Banner: React.FC<BannerProps> = ({
@@ -15,6 +16,7 @@ const Banner: React.FC<BannerProps> = ({
   highlightedText,
   headingTextAfter,
   footerText,
+  blurAnimation
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -55,9 +57,15 @@ const Banner: React.FC<BannerProps> = ({
           }}
           className="text-4xl md:text-5xl font-semibold px-6"
         >
-          {headingTextBefore}{" "}
-          <span style={{ color: "#a35ca2" }}>{highlightedText}</span>{" "}
-          {headingTextAfter}
+          <span
+            dangerouslySetInnerHTML={{
+              __html: `${
+                headingTextBefore || ""
+              } <span style="color: #a35ca2;">${highlightedText || ""}</span> ${
+                headingTextAfter || ""
+              }`,
+            }}
+          />
         </motion.div>
       </div>
 
