@@ -1,32 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, useAnimation, useScroll, useSpring, useTransform } from 'framer-motion';
 
 const Footer = () => {
   const footerRef = useRef(null);
-  const controls = useAnimation();
   const imgContainerRef = useRef(null);
   const [tiltStyle, setTiltStyle] = useState({});
   const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        controls.start({
-          x: entry.isIntersecting ? '9%' : '-10%',
-          opacity: entry.isIntersecting ? 1 : 0,
-        });
-      },
-      { threshold: 0.1 }
-    );
+  // Scroll-based animation
+  const { scrollYProgress } = useScroll({
+    target: footerRef,
+    offset: ["start end", "end start"], // Animate as it enters/leaves viewport
+  });
 
-    if (footerRef.current) {
-      observer.observe(footerRef.current);
-    }
-
-    return () => {
-      if (footerRef.current) observer.unobserve(footerRef.current);
-    };
-  }, [controls]);
+  const xRange = useTransform(scrollYProgress, [0, 1], ['-15%', '30%']);
+  const springX = useSpring(xRange, {
+    stiffness: 100,
+    damping: 30,
+  });
 
   const handleMouseMove = (e) => {
     const bounds = imgContainerRef.current.getBoundingClientRect();
@@ -50,7 +41,10 @@ const Footer = () => {
   };
 
   return (
-    <div className="relative h-[45rem] w-full flex items-center justify-center overflow-hidden">
+    <div
+      ref={footerRef}
+      className="relative h-[45rem] w-full flex items-center justify-center overflow-hidden"
+    >
       <motion.div
         ref={imgContainerRef}
         className="absolute top-1/2 left-1/2 w-[14rem] h-[14rem] z-10 transform -translate-x-1/2 -translate-y-1/2 bg-[#2E2E2E] flex items-center justify-center rounded-[1.5rem] overflow-hidden transition-all duration-200 ease-in-out"
@@ -84,13 +78,10 @@ const Footer = () => {
       />
 
       <motion.div
-        ref={footerRef}
         className="text-white text-4xl z-0"
-        initial={{ x: '-10%', opacity: 0 }}
-        animate={controls}
-        transition={{ type: 'spring', stiffness: 100, damping: 25 }}
+        style={{ x: springX }}
       >
-        <h2 className="text-[8.1rem] font-semibold text-center px-4">
+        <h2 className="text-[2rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7.5rem] 2xl:text-[8.5rem] font-semibold text-center px-4">
           Trade Anytime, <span style={{ color: '#A35CA2' }}>Anywhere</span>
         </h2>
       </motion.div>
