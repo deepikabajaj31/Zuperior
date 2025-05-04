@@ -27,7 +27,7 @@ const Counter: React.FC = () => {
             autoPlay
             muted
             loop
-            preload="true"
+            preload="auto"
             playsInline
             controls={false}
             className="absolute top-0 left-0 w-full h-[200%] object-cover"
@@ -36,7 +36,7 @@ const Counter: React.FC = () => {
             label="Are you next?"
             bgColor="rgb(1, 4, 13)"
             isRotate={true}
-            className="w-min m-auto border border-black mt-[-2rem] sm:mt-[-4rem] md:mt-[-6.5rem]"
+            className="w-min m-auto border border-black mt-[-2rem] sm:mt-[-4rem] md:mt-[-6.5rem] cursor-pointer"
             width="clamp(10rem, 15vw, 12rem)"
           />
         </div>

@@ -1,18 +1,18 @@
-import React from 'react';
- 
- export interface ShinyWrapperProps {
-   children: React.ReactNode;
-   className?: string;
- }
- 
- const ShinyButtonWrapper: React.FC<ShinyWrapperProps> = ({
-   children,
-   className = '',
- }) => {
-   return (
-     <div className={`relative rounded-[1rem] ${className}`}>
-       <div
-         className="
+import React from "react";
+
+export interface ShinyWrapperProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const ShinyButtonWrapper: React.FC<ShinyWrapperProps> = ({
+  children,
+  className = "",
+}) => {
+  return (
+    <div className={`relative rounded-[1rem] ${className}`}>
+      <div
+        className="
            absolute inset-0
            rounded-[1rem]
            bg-gradient-to-r 
@@ -22,20 +22,20 @@ import React from 'react';
            animate-shine
            pointer-events-none
          "
-       />
- 
-       <div
-         className="
+      />
+
+      <div
+        className="
            relative
            m-[1.5px]
            rounded-[1rem]
            overflow-hidden
          "
-       >
-         {children}
-       </div>
-     </div>
-   );
- };
- 
- export default ShinyButtonWrapper;
+      >
+        {children}
+      </div>
+    </div>
+  );
+};
+
+export default ShinyButtonWrapper;

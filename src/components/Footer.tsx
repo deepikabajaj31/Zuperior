@@ -1,5 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+
+interface MouseMoveEvent extends React.MouseEvent<HTMLDivElement, MouseEvent> {}
 
 const Footer = () => {
   const footerRef = useRef(null);
@@ -19,15 +21,7 @@ const Footer = () => {
     damping: 30,
   });
 
-  interface GlowPosition {
-    x: number;
-    y: number;
-  }
-
-  interface MouseMoveEvent
-    extends React.MouseEvent<HTMLDivElement, MouseEvent> {}
-
-  const handleMouseMove = (e: MouseMoveEvent): void => {
+  const handleMouseMove = useCallback((e: MouseMoveEvent): void => {
     if (!imgContainerRef.current) return;
     const bounds = imgContainerRef.current.getBoundingClientRect();
     const x = e.clientX - bounds.left;
@@ -43,11 +37,11 @@ const Footer = () => {
     });
 
     setGlowPos({ x, y });
-  };
+  }, []);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setTiltStyle({ transform: "rotateX(0deg) rotateY(0deg) scale(1)" });
-  };
+  }, []);
 
   return (
     <div

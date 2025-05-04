@@ -7,6 +7,22 @@ interface TimelineStepProps {
   color: string;
 }
 
+const NumberLine: React.FC<{ number: string; color: string; height: any }> = ({
+  number,
+  color,
+  height,
+}) => (
+  <div className="w-[10%] flex flex-col items-center pb-4 mt-2">
+    <div className="text-[2.7rem] font-bold mb-2">{number}</div>
+    <div className="w-[2px] h-[285px] bg-[#222] relative overflow-hidden">
+      <motion.div
+        className="absolute w-[2px] top-0 left-0 origin-top"
+        style={{ height, backgroundColor: color }}
+      />
+    </div>
+  </div>
+);
+
 const TimelineStep = ({ number, title, color }: TimelineStepProps) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -28,29 +44,13 @@ const TimelineStep = ({ number, title, color }: TimelineStepProps) => {
               </p>
               <p className="text-2xl font-semibold mt-1 mb-0">{title}</p>
             </div>
-            <div className="w-[10%] flex flex-col items-center pb-4 mt-2">
-              <div className="text-[2.7rem] font-bold mb-2">{number}</div>
-              <div className="w-[2px] h-[285px] bg-[#222] relative overflow-hidden">
-                <motion.div
-                  className="absolute w-[2px] top-0 left-0 origin-top"
-                  style={{ height, backgroundColor: color }}
-                />
-              </div>
-            </div>
+            <NumberLine number={number} color={color} height={height} />
             <div className="w-full min-h-[200px] flex flex-col text-right" />
           </>
         ) : (
           <>
             <div className="w-full min-h-[200px] flex flex-col text-left" />
-            <div className="w-[10%] flex flex-col items-center pb-4 mt-2">
-              <div className="text-[2.7rem] font-bold mb-2">{number}</div>
-              <div className="w-[2px] h-[285px] bg-[#222] relative overflow-hidden">
-                <motion.div
-                  className="absolute w-[2px] top-0 left-0 origin-top"
-                  style={{ height, backgroundColor: color }}
-                />
-              </div>
-            </div>
+            <NumberLine number={number} color={color} height={height} />
             <div className="w-full min-h-[200px] flex flex-col text-left">
               <p className="text-base opacity-60 m-0">
                 Step {parseInt(number, 10)}

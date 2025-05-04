@@ -90,7 +90,7 @@ const Packages: React.FC = () => {
                   />
                 </div>
                 <div className="flex items-center py-6 justify-center h-full">
-                  <button className="w-min whitespace-nowrap py-2.5 px-6 bg-gradient-to-r from-[#8b5cf6] to-[#a78bfa] text-white font-medium rounded-[15px]">
+                  <button className="w-min whitespace-nowrap py-2.5 px-6 bg-gradient-to-r from-[#8b5cf6] to-[#a78bfa] text-white font-medium rounded-[15px] cursor-pointer">
                     Start Trading
                   </button>
                 </div>

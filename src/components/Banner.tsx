@@ -24,7 +24,7 @@ const Banner: React.FC<BannerProps> = ({
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 1.0", "start 0.2"], 
+    offset: ["start 1.0", "start 0.2"],
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
@@ -38,22 +38,20 @@ const Banner: React.FC<BannerProps> = ({
   } ${headingTextAfter || ""}`.trim();
 
   const parsedWords = fullTextContent
-    .split(/(<br\s*\/?>|\s+)/i) // capture <br>, spaces
+    .split(/(<br\s*\/?>|\s+)/i)
     .filter((w) => w && w.trim() !== "");
 
   const highlightWords = (highlightedText || "")
     .split(/\s+/)
     .filter((w) => w.trim());
 
-  const isHighlighted = (word: string) => {
-    return highlightWords.includes(word.trim());
-  };
+  const isHighlighted = (word: string) => highlightWords.includes(word.trim());
 
   return (
     <div
       ref={ref}
       style={{ ...styles.banner, position: "relative" }}
-      className="p-0 overflow-hidden justify-center items-center flex-nowrap w-min flex flex-col w-min h-min"
+      className="p-0 overflow-hidden justify-center items-center flex-nowrap w-min flex flex-col h-min"
     >
       <button style={styles.button} className="h-min rounded-3xl">
         <p style={styles.btnText} className="rounded-3xl font-semibold">
@@ -82,9 +80,7 @@ const Banner: React.FC<BannerProps> = ({
           {parsedWords.map((word, index) => {
             const isBreak = word.toLowerCase().includes("<br");
 
-            if (isBreak) {
-              return <br key={`br-${index}`} />;
-            }
+            if (isBreak) return <br key={`br-${index}`} />;
 
             if (!blurAnimation) {
               return (
@@ -105,7 +101,7 @@ const Banner: React.FC<BannerProps> = ({
             const wordCount = parsedWords.filter(
               (w) => !w.toLowerCase().includes("<br")
             ).length;
-            
+
             const progressPerWord = 0.8 / wordCount;
             const validWordIndex = parsedWords
               .slice(0, index)
