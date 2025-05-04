@@ -8,7 +8,7 @@ export interface ShinyButtonProps {
   iconSize?: number;
   className?: string;
   bgColor?: string;
-  isRotate?: boolean;
+  isRotate?: boolean; 
 }
 
 const Button: React.FC<ShinyButtonProps> = ({
@@ -17,7 +17,7 @@ const Button: React.FC<ShinyButtonProps> = ({
   iconSize = 18,
   className = '',
   bgColor = '',
-  isRotate = false,
+  isRotate = false, 
 }) => {
   return (
     <ShinyWrapper className={`mb-[2rem] ${className}`}>
