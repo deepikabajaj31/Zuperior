@@ -8,7 +8,7 @@ interface BannerProps {
   headingTextAfter?: string;
   footerText: string;
   blurAnimation?: boolean;
-  textDirection?: "right" | "left"; // New prop to control text animation direction
+  textDirection?: "right" | "left";
 }
 
 const Banner: React.FC<BannerProps> = ({
@@ -17,14 +17,14 @@ const Banner: React.FC<BannerProps> = ({
   highlightedText,
   headingTextAfter,
   footerText,
-  blurAnimation,
-  textDirection = "right", // Default to right if not specified
+  blurAnimation = false,
+  textDirection = "right",
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 1", "start 0.3"], // Start when top of element is 90% from top, end at 30%
+    offset: ["start 1", "start 0.3"],
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
@@ -33,13 +33,24 @@ const Banner: React.FC<BannerProps> = ({
     mass: 0.2,
   });
 
-  // Conditionally set the x transform based on textDirection
   const x = useTransform(
     smoothProgress,
     [0, 1],
-    textDirection === "right" ? ["100vw", "0vw"] : ["-100vw", "0vw"]
+    blurAnimation
+      ? ["0vw", "0vw"]
+      : textDirection === "right"
+      ? ["100vw", "0vw"]
+      : ["-100vw", "0vw"]
   );
-  const opacity = useTransform(smoothProgress, [0, 1], [0, 1]);
+
+  const opacity = useTransform(smoothProgress, [0, 0.2, 1], [0, 0, 1]);
+  const blur = useTransform(
+    smoothProgress,
+    [0, 0.2, 0.6, 1],
+    blurAnimation
+      ? ["blur(0px)", "blur(0px)", "blur(10px)", "blur(0px)"]
+      : ["blur(0px)", "blur(0px)", "blur(0px)", "blur(0px)"]
+  );
 
   return (
     <div
@@ -55,7 +66,7 @@ const Banner: React.FC<BannerProps> = ({
 
       <div className="w-full text-center min-h-[60px]">
         <motion.div
-          style={{ x, opacity }}
+          style={{ x, opacity, filter: blur }}
           transition={{
             type: "spring",
             stiffness: 120,
