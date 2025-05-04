@@ -33,13 +33,14 @@ const Banner: React.FC<BannerProps> = ({
     mass: 0.2,
   });
 
-  // Combine all text parts and split by spaces or <br/>
   const fullTextContent = `${headingTextBefore || ""} ${
     highlightedText || ""
   } ${headingTextAfter || ""}`.trim();
-  const parsedWords = fullTextContent.split(/(\s+|<br\s*\/?>)/).filter(Boolean);
 
-  // Highlight logic: match words from highlightedText
+  const parsedWords = fullTextContent
+    .split(/(<br\s*\/?>|\s+)/i) // capture <br>, spaces
+    .filter((w) => w && w.trim() !== "");
+
   const highlightWords = (highlightedText || "")
     .split(/\s+/)
     .filter((w) => w.trim());
@@ -63,8 +64,10 @@ const Banner: React.FC<BannerProps> = ({
       <div className="w-full text-center min-h-[60px] overflow-hidden">
         <motion.div
           className="text-4xl md:text-5xl font-semibold px-6 flex flex-wrap justify-center"
-          style={
-            blurAnimation
+          style={{
+            whiteSpace: "pre-line",
+            display: "inline-block",
+            ...(blurAnimation
               ? {}
               : {
                   x: useTransform(
@@ -73,12 +76,13 @@ const Banner: React.FC<BannerProps> = ({
                     [textDirection === "right" ? "100vw" : "-100vw", "0vw"]
                   ),
                   opacity: useTransform(smoothProgress, [0.2, 1], [0, 1]),
-                }
-          }
+                }),
+          }}
         >
           {parsedWords.map((word, index) => {
-            const cleanedWord = word.trim().toLowerCase();
-            if (cleanedWord === "<br/>" || cleanedWord === "<br>") {
+            const isBreak = word.toLowerCase().includes("<br");
+
+            if (isBreak) {
               return <br key={`br-${index}`} />;
             }
 
@@ -98,10 +102,14 @@ const Banner: React.FC<BannerProps> = ({
               );
             }
 
-            // Word-by-word animation for blur mode
-            const wordCount = parsedWords.length;
+            const wordCount = parsedWords.filter(
+              (w) => !w.toLowerCase().includes("<br")
+            ).length;
+            const validWordIndex = parsedWords
+              .slice(0, index)
+              .filter((w) => !w.toLowerCase().includes("<br")).length;
             const progressPerWord = 1 / wordCount;
-            const wordStartProgress = index * progressPerWord;
+            const wordStartProgress = validWordIndex * progressPerWord;
 
             const wordOpacity = useTransform(
               smoothProgress,
