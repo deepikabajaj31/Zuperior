@@ -83,9 +83,7 @@ const Packages: React.FC = () => {
         <section
             className="relative flex flex-none flex-col flex-nowrap items-center justify-center overflow-hidden box-border border border-transparent antialiased text-white font-manrope fill-white"
             style={{
-                background: '#01040d',
                 color: 'rgb(255 255 255)',
-                fontFamily: '"Manrope", "Manrope Fallback"',
                 WebkitTapHighlightColor: 'transparent',
                 WebkitTextSizeAdjust: '100%',
                 tabSize: 4,
