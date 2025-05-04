@@ -24,7 +24,7 @@ const Banner: React.FC<BannerProps> = ({
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.9", "start 0.2"],
+    offset: ["start 1.0", "start 0.2"], 
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
@@ -105,10 +105,11 @@ const Banner: React.FC<BannerProps> = ({
             const wordCount = parsedWords.filter(
               (w) => !w.toLowerCase().includes("<br")
             ).length;
+            
+            const progressPerWord = 0.8 / wordCount;
             const validWordIndex = parsedWords
               .slice(0, index)
               .filter((w) => !w.toLowerCase().includes("<br")).length;
-            const progressPerWord = 1 / wordCount;
             const wordStartProgress = validWordIndex * progressPerWord;
 
             const wordOpacity = useTransform(
@@ -120,8 +121,8 @@ const Banner: React.FC<BannerProps> = ({
               smoothProgress,
               [
                 wordStartProgress,
-                wordStartProgress + 0.2,
-                wordStartProgress + 0.3,
+                wordStartProgress + 0.075,
+                wordStartProgress + 0.15,
               ],
               ["blur(10px)", "blur(5px)", "blur(0px)"]
             );
