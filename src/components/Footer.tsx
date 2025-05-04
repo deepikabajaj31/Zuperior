@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
-import { motion, useAnimation, useScroll, useSpring, useTransform } from 'framer-motion';
+import React, { useRef, useState } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 const Footer = () => {
   const footerRef = useRef(null);
-  const imgContainerRef = useRef(null);
+  const imgContainerRef = useRef<HTMLDivElement>(null);
   const [tiltStyle, setTiltStyle] = useState({});
   const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
 
@@ -13,13 +13,22 @@ const Footer = () => {
     offset: ["start end", "end start"], // Animate as it enters/leaves viewport
   });
 
-  const xRange = useTransform(scrollYProgress, [0, 1], ['-15%', '30%']);
+  const xRange = useTransform(scrollYProgress, [0, 1], ["-15%", "30%"]);
   const springX = useSpring(xRange, {
     stiffness: 100,
     damping: 30,
   });
 
-  const handleMouseMove = (e) => {
+  interface GlowPosition {
+    x: number;
+    y: number;
+  }
+
+  interface MouseMoveEvent
+    extends React.MouseEvent<HTMLDivElement, MouseEvent> {}
+
+  const handleMouseMove = (e: MouseMoveEvent): void => {
+    if (!imgContainerRef.current) return;
     const bounds = imgContainerRef.current.getBoundingClientRect();
     const x = e.clientX - bounds.left;
     const y = e.clientY - bounds.top;
@@ -37,7 +46,7 @@ const Footer = () => {
   };
 
   const handleMouseLeave = () => {
-    setTiltStyle({ transform: 'rotateX(0deg) rotateY(0deg) scale(1)' });
+    setTiltStyle({ transform: "rotateX(0deg) rotateY(0deg) scale(1)" });
   };
 
   return (
@@ -51,7 +60,7 @@ const Footer = () => {
         style={{
           perspective: 1000,
           ...tiltStyle,
-          transition: 'transform 0.1s ease-out',
+          transition: "transform 0.1s ease-out",
         }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -60,14 +69,14 @@ const Footer = () => {
           className="absolute w-full h-full pointer-events-none rounded-[1.5rem]"
           style={{
             background: `radial-gradient(circle at ${glowPos.x}px ${glowPos.y}px, rgba(255,255,255,0.2), transparent 60%)`,
-            transition: 'background 0.05s ease-out',
+            transition: "background 0.05s ease-out",
           }}
         />
         <img
           src="https://framerusercontent.com/images/wPXXd95jZIk3zRQtU2enBhy2g8.png"
           alt="Decorative"
           className="w-[14.5rem] h-[14.5rem] object-cover filter brightness-0 invert p-3 rounded-[1.5rem] cursor-pointer"
-          style={{ transformOrigin: 'center' }}
+          style={{ transformOrigin: "center" }}
         />
       </motion.div>
 
@@ -77,12 +86,9 @@ const Footer = () => {
         className="absolute top-[37rem] left-1/2 transform -translate-x-1/2 -translate-y-[30%] object-contain object-center rounded-xl z-5 h-[5rem] w-[10rem]"
       />
 
-      <motion.div
-        className="text-white text-4xl z-0"
-        style={{ x: springX }}
-      >
+      <motion.div className="text-white text-4xl z-0" style={{ x: springX }}>
         <h2 className="text-[2rem] sm:text-[4rem] md:text-[5rem] lg:text-[5rem] xl:text-[6.5rem] 2xl:text-[6.5rem] font-semibold text-center px-4">
-          Trade Anytime, <span style={{ color: '#A35CA2' }}>Anywhere</span>
+          Trade Anytime, <span style={{ color: "#A35CA2" }}>Anywhere</span>
         </h2>
       </motion.div>
     </div>
