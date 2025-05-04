@@ -26,6 +26,7 @@ export default function Home() {
         highlightedText="Zuper"
         headingTextAfter="plan"
         footerText="Flexible Deposits for Every Trader"
+        textDirection="left"
       />
       <Packages />
       <Banner

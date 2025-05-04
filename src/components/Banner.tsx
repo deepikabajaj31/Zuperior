@@ -8,6 +8,7 @@ interface BannerProps {
   headingTextAfter?: string;
   footerText: string;
   blurAnimation?: boolean;
+  textDirection?: "right" | "left"; // New prop to control text animation direction
 }
 
 const Banner: React.FC<BannerProps> = ({
@@ -16,7 +17,8 @@ const Banner: React.FC<BannerProps> = ({
   highlightedText,
   headingTextAfter,
   footerText,
-  blurAnimation
+  blurAnimation,
+  textDirection = "right", // Default to right if not specified
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -31,7 +33,12 @@ const Banner: React.FC<BannerProps> = ({
     mass: 0.2,
   });
 
-  const x = useTransform(smoothProgress, [0, 1], ["100vw", "0vw"]);
+  // Conditionally set the x transform based on textDirection
+  const x = useTransform(
+    smoothProgress,
+    [0, 1],
+    textDirection === "right" ? ["100vw", "0vw"] : ["-100vw", "0vw"]
+  );
   const opacity = useTransform(smoothProgress, [0, 1], [0, 1]);
 
   return (
