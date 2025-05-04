@@ -69,10 +69,10 @@ const Banner: React.FC<BannerProps> = ({
               : {
                   x: useTransform(
                     smoothProgress,
-                    [0, 0.3],
+                    [0, 1],
                     [textDirection === "right" ? "100vw" : "-100vw", "0vw"]
                   ),
-                  opacity: useTransform(smoothProgress, [0, 0.3], [0, 1]),
+                  opacity: useTransform(smoothProgress, [0.2, 1], [0, 1]),
                 }
           }
         >
