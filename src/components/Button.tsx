@@ -1,6 +1,6 @@
-import { ArrowUpRight } from "lucide-react";
-import React from "react";
-import ShinyWrapper from "./ShinyWrapper";
+import { ArrowUpRight } from 'lucide-react';
+import React from 'react';
+import ShinyButtonWrapper from './ShinyButtonWrapper';
 
 export interface ShinyButtonProps {
   label: string;
@@ -16,13 +16,13 @@ const Button: React.FC<ShinyButtonProps> = ({
   label,
   onClick,
   iconSize = 18,
-  className = "",
-  bgColor = "#6242A5",
+  className = '',
+  bgColor = '#6242A5',
   isRotate = false,
-  width = "13rem",
+  width = '13rem',
 }) => {
   return (
-    <ShinyWrapper className={`mb-[2rem] ${className}`}>
+    <ShinyButtonWrapper className={`mb-[2rem] ${className}`}>
       <div
         className="
           h-[clamp(2rem, 5vw, 3rem)] 
@@ -41,13 +41,13 @@ const Button: React.FC<ShinyButtonProps> = ({
         <div
           className={`
             transition-transform duration-300 ease-in-out
-            ${isRotate ? "group-hover:rotate-45" : ""}
+            ${isRotate ? 'group-hover:rotate-45' : ''}
           `}
         >
           <ArrowUpRight size={iconSize} />
         </div>
       </div>
-    </ShinyWrapper>
+    </ShinyButtonWrapper>
   );
 };
 
