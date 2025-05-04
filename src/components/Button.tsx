@@ -8,7 +8,8 @@ export interface ShinyButtonProps {
   iconSize?: number;
   className?: string;
   bgColor?: string;
-  isRotate?: boolean; 
+  isRotate?: boolean;
+  width?: string; 
 }
 
 const Button: React.FC<ShinyButtonProps> = ({
@@ -16,14 +17,15 @@ const Button: React.FC<ShinyButtonProps> = ({
   onClick,
   iconSize = 18,
   className = '',
-  bgColor = '',
-  isRotate = false, 
+  bgColor = '#6242A5',
+  isRotate = false,
+  width = '13rem', 
 }) => {
   return (
     <ShinyWrapper className={`mb-[2rem] ${className}`}>
       <div
         className="
-          h-[2.7rem] w-[13rem]
+          h-[2.7rem] 
           flex items-center justify-center
           text-white font-semibold gap-2
           rounded-[1rem]
@@ -31,7 +33,7 @@ const Button: React.FC<ShinyButtonProps> = ({
           group
         "
         onClick={onClick}
-        style={{ backgroundColor: bgColor }}
+        style={{ backgroundColor: bgColor, width }} 
       >
         <h1>{label}</h1>
         <div
