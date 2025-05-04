@@ -14,7 +14,7 @@ const Counter: React.FC = () => {
 
   return (
     <div className="mt-7 w-full relative">
-      <div className="w-[100%]">
+      <div className="w-[100%]" style={{ filter: "hue-rotate(30deg)" }}>
         <div
           className="relative overflow-hidden w-full"
           style={{ paddingTop: "40%" }}
@@ -34,12 +34,12 @@ const Counter: React.FC = () => {
             bgColor="rgb(1, 4, 13)"
             isRotate={true}
             className="w-min m-auto border border-black mt-[-2rem] sm:mt-[-4rem] md:mt-[-6.5rem]"
-            width="clamp(10rem, 20vw, 15rem)"
+            width="clamp(10rem, 15vw, 12rem)"
           />
         </div>
       </div>
       <div className="absolute top-[-3rem] sm:top-0 left-1/2 transform -translate-x-1/2 w-[80%] h-full flex items-center justify-center">
-      <p
+        <p
           className="text-center text-white whitespace-nowrap overflow-hidden font-medium"
           style={{
             fontSize: "clamp(4rem, 15vw, 18rem)",
