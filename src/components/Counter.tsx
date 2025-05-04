@@ -4,13 +4,17 @@ import Button from "./Button";
 
 const Counter: React.FC = () => {
   const [count, setCount] = useState(999150);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
+    setHasMounted(true);
     const interval = setInterval(() => {
       setCount((prev) => prev + 1);
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  if (!hasMounted) return null; // Prevent hydration mismatch
 
   return (
     <div className="mt-7 w-full relative">
