@@ -81,7 +81,7 @@ const Footer = () => {
         className="text-white text-4xl z-0"
         style={{ x: springX }}
       >
-        <h2 className="text-[2rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7.5rem] 2xl:text-[8.5rem] font-semibold text-center px-4">
+        <h2 className="text-[2rem] sm:text-[4rem] md:text-[5rem] lg:text-[5rem] xl:text-[6.5rem] 2xl:text-[6.5rem] font-semibold text-center px-4">
           Trade Anytime, <span style={{ color: '#A35CA2' }}>Anywhere</span>
         </h2>
       </motion.div>
