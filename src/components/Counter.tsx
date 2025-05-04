@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 
@@ -32,8 +33,8 @@ const Counter: React.FC = () => {
             label="Are you next?"
             bgColor="rgb(1, 4, 13)"
             isRotate={true}
-            className="w-min m-auto border border-black mt-[-6.5rem]"
-            width="12rem"
+            className="w-min m-auto border border-black mt-[-2rem] sm:mt-[-4rem] md:mt-[-6.5rem]"
+            width="clamp(10rem, 20vw, 15rem)"
           />
         </div>
       </div>
