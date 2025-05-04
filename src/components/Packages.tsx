@@ -44,7 +44,7 @@ const plans = [
     {
         name: "Zuper Pro",
         description:
-            "Ideal for experienced traders seeking precision, speed, and high-stakes performance.",
+            "Ideal for traders seeking precision, speed, and high-stakes performance.",
         features: [
             "$500",
             "from 0.1 pips",
@@ -133,11 +133,12 @@ const Packages: React.FC = () => {
                                     </div>
                                     <div className="flex-none opacity-40 overflow-visible absolute z-10 rounded-[15px] inset-0 w-full h-full box-border pointer-events-none left-0 top-0 border border-white/50" style={{ mask: 'linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .25) 100%)' }} />
                                 </div>
-                                <div className="p-6">
-                                    <button className="w-full py-2 bg-gradient-to-r from-[#8b5cf6] to-[#a78bfa] text-white font-medium rounded-[15px]">
+                                <div className="flex items-center py-6 justify-center h-full">
+                                    <button className="w-min whitespace-nowrap py-2.5 px-6 bg-gradient-to-r from-[#8b5cf6] to-[#a78bfa] text-white font-medium rounded-[15px]">
                                         Start Trading
                                     </button>
                                 </div>
+
                             </div>
                         )
                         return plan.shiny ? (
