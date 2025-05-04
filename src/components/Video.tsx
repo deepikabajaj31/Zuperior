@@ -15,7 +15,7 @@ const Video: React.FC = () => {
           controls={false}
         ></video>
       </div>
-      <Button label="Get Funded" className="mt-[-3rem] w-min m-auto" />
+      <Button label="Get Funded" className="w-min m-auto" bgColor="black"/>
     </div>
   );
 };
