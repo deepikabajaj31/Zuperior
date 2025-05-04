@@ -94,7 +94,7 @@ const Packages: React.FC = () => {
             <div className="items-center mt-25 mb-50 flex flex-none flex-col flex-nowrap gap-6 h-min justify-center overflow-visible relative w-min p-0">
                 <div className="items-start grid gap-2.5 auto-rows-min grid-cols-[repeat(2,minmax(200px,1fr))] grid-rows-[repeat(2,min-content)] items-center self-stretch backdrop-blur-[15px] md:flex flex-none flex-row flex-nowrap md:gap-0 h-min justify-center overflow-hidden relative w-auto p-0">
                     {/* Left labels */}
-                    <div className="w-full pt-3 justify-self-start md:justify-self-[unset] items-center flex flex-none flex-row flex-nowrap h-min justify-center overflow-hidden relative md:w-min p-0 rounded-[15px]">
+                    <div className="w-full pt-3 max-[768px]:pt-[92px] justify-self-start md:justify-self-[unset] items-center flex flex-none flex-row flex-nowrap h-min justify-center overflow-hidden relative md:w-min rounded-[15px]">
                         <div className="items-start flex flex-none flex-col flex-nowrap gap-[15px] p-0 h-min overflow-hidden relative w-min md:p-[25px]">
                             <div className="h-12 flex items-center text-sm text-zinc-400" />
                             {rowTitles.map((title) => (
