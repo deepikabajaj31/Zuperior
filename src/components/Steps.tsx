@@ -19,7 +19,7 @@ const TimelineStep = ({ number, title, color }: TimelineStepProps) => {
 
   return (
     <div className="flex justify-center w-full relative" ref={ref}>
-      <div className="w-full flex max-[768px]:hidden">
+      <div className="w-full flex max-[768px]:hidden gap-[4rem]">
         {isEven ? (
           <>
             <div className="w-full min-h-[200px] flex flex-col text-left text-right">
