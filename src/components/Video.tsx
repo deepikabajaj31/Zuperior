@@ -1,9 +1,10 @@
 import React from "react";
+import Button from "./Button";
 
 const Video: React.FC = () => {
   return (
     <div>
-      <div style={{ height: "263px", width: "100%", maxWidth: "470px", margin: "auto" }}>
+      <div style={{ width: "100%", maxWidth: "470px", margin: "auto" }}>
         <video
           src="/videos/video.mp4"
           autoPlay
@@ -14,6 +15,7 @@ const Video: React.FC = () => {
           controls={false}
         ></video>
       </div>
+      <Button label="Get Funded" className="mt-[-3rem] w-min m-auto" />
     </div>
   );
 };

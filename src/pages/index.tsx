@@ -6,7 +6,10 @@ import Button from "@/components/Button";
 
 export default function Home() {
   return (
-    <div style={{ paddingTop: "80px" }} className=" flex flex-col items-center justify-center">
+    <div
+      style={{ paddingTop: "80px" }}
+      className=" flex flex-col items-center justify-center"
+    >
       <Card
         buttonText="Our Process"
         headingTextBefore="Become a"
@@ -15,7 +18,7 @@ export default function Home() {
         footerText="🚀 Sign up. Fund. Trade."
       />
       <Timeline />
-      <Button label="Open FREE Account"/>
+      <Button label="Open FREE Account" className="mb-25" />
       <Card
         buttonText="Compare Plans"
         headingTextBefore="Compare your"

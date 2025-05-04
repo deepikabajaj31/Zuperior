@@ -1,27 +1,21 @@
-import { ArrowUpRight } from 'lucide-react';
-import React from 'react';
+import { ArrowUpRight } from "lucide-react";
+import React from "react";
 
-export interface ShinyButtonProps {
+export interface ButtonProps {
   label: string;
-
   onClick?: React.MouseEventHandler<HTMLDivElement>;
-
   iconSize?: number;
-
   className?: string;
 }
 
-const ShinyButton: React.FC<ShinyButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
   iconSize = 18,
-  className = '',
+  className = "",
 }) => {
   return (
-    <div
-      className={`relative rounded-[1rem] mb-[2rem] ${className}`}
-      onClick={onClick}
-    >
+    <div className={`relative rounded-[1rem] ${className}`} onClick={onClick}>
       <div
         className="
         absolute inset-0
@@ -52,4 +46,4 @@ const ShinyButton: React.FC<ShinyButtonProps> = ({
   );
 };
 
-export default ShinyButton;
+export default Button;
