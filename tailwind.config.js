@@ -1,19 +1,22 @@
-// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/**/*.{js,ts,jsx,tsx}"],
-    theme: {
-      extend: {
-        keyframes: {
-          rotateShine: {
-            "0%": { transform: "rotate(0deg)" },
-            "100%": { transform: "rotate(360deg)" },
-          },
-        },
-        animation: {
-          "rotate-shine": "rotateShine 2s linear infinite",
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      keyframes: {
+        'rotate-shine': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
         },
       },
+      animation: {
+        'rotate-shine': 'rotate-shine 4s linear infinite',
+      },
     },
-    plugins: [],
-  }
-  
+  },
+  plugins: [],
+};

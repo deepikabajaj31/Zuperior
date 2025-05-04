@@ -39,18 +39,23 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-@layer utilities {
-  @keyframes shine {
-    to {
-      background-position: 200% center;
-    }
-  }
 
-  .animate-shine {
-    background-size: 200% 100%;
-    animation: shine 6s linear infinite; /* Slowed from 2.5s to 6s */
+@keyframes rotate-shine {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
+
+.rotate-shine {
+  animation: rotate-shine 4s linear infinite;
+
+  will-change: transform;
+  transform-origin: center;
+}
+
 
 @theme inline {
   --color-background: var(--background);
