@@ -4,6 +4,7 @@ import Packages from "@/components/Packages";
 import Video from "@/components/Video";
 import Button from "@/components/Button";
 import Counter from "@/components/Counter";
+import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
@@ -43,6 +44,8 @@ export default function Home() {
         blurAnimation={true}
       />
       <Counter />
+      <Footer/>
+      
     </div>
   );
 }
