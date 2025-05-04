@@ -38,8 +38,8 @@ const Counter: React.FC = () => {
           />
         </div>
       </div>
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[80%] h-full flex items-center justify-center">
-        <p
+      <div className="absolute top-[-3rem] sm:top-0 left-1/2 transform -translate-x-1/2 w-[80%] h-full flex items-center justify-center">
+      <p
           className="text-center text-white whitespace-nowrap overflow-hidden font-medium"
           style={{
             fontSize: "clamp(4rem, 15vw, 18rem)",
