@@ -15,7 +15,7 @@ export default function Home() {
         footerText="🚀 Sign up. Fund. Trade."
       />
       <Timeline />
-      <Button label="Open FREE Account"/>
+      <Button label="Open FREE Account" bgColor="#6242A5"/>
       <Card
         buttonText="Compare Plans"
         headingTextBefore="Compare your"
