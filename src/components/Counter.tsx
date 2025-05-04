@@ -33,14 +33,22 @@ const Counter: React.FC = () => {
             bgColor="rgb(1, 4, 13)"
             isRotate={true}
             className="w-min m-auto border border-black mt-[-6.5rem]"
-            width="11rem"
+            width="12rem"
           />
         </div>
       </div>
-      <p className="absolute top-[25%] left-1/2 transform -translate-x-1/2 text-[12rem] text-center text-white">
-        ${count.toLocaleString()}
-        <span style={{ color: "rgb(159, 139, 207)" }}>+</span>
-      </p>
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[80%] h-full flex items-center justify-center">
+        <p
+          className="text-center text-white whitespace-nowrap overflow-hidden font-medium"
+          style={{
+            fontSize: "clamp(4rem, 15vw, 18rem)",
+            maxWidth: "100%",
+          }}
+        >
+          ${count.toLocaleString()}
+          <span style={{ color: "rgb(159, 139, 207)" }}>+</span>
+        </p>
+      </div>
     </div>
   );
 };
