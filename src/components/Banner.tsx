@@ -1,15 +1,15 @@
 import { CSSProperties, useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
-interface HeaderProps {
+interface BannerProps {
   buttonText: string;
-  headingTextBefore: string;
-  highlightedText: string;
-  headingTextAfter: string;
+  headingTextBefore?: string;
+  highlightedText?: string;
+  headingTextAfter?: string;
   footerText: string;
 }
 
-const Header: React.FC<HeaderProps> = ({
+const Banner: React.FC<BannerProps> = ({
   buttonText,
   headingTextBefore,
   highlightedText,
@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <div
       ref={ref}
-      style={styles.header}
+      style={styles.banner}
       className="p-0 overflow-hidden justify-center items-center flex-nowrap w-min flex relative flex-col w-min h-min"
     >
       <button style={styles.button} className="h-min rounded-3xl">
@@ -67,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({
 };
 
 const styles: { [key: string]: CSSProperties } = {
-  header: {
+  banner: {
     gap: "15px",
     width: "100%",
     height: "20%",
@@ -85,4 +85,4 @@ const styles: { [key: string]: CSSProperties } = {
   },
 };
 
-export default Header;
+export default Banner;
